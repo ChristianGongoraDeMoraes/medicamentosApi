@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "RF9TDjJN70EoKUpLdnmHuKoCY5bgfmXNw7mqggwO9tQ=",
+  "Source": "medicamentosApi",
+  "BasePath": "_content/medicamentosApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

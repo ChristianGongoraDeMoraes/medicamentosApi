@@ -2,6 +2,7 @@ using System.Text;
 using medicamentosApi.src.DataBase;
 using medicamentosApi.src.interfaces;
 using medicamentosApi.src.model;
+using medicamentosApi.src.repository;
 using medicamentosApi.src.services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -89,6 +90,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IMedicamentoRepository, MedicamentoRepository>();
 
 var app = builder.Build();
 

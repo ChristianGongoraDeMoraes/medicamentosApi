@@ -17,10 +17,12 @@ namespace medicamentosApi.src.DataBase
 
         }
         
+        public DbSet<Medicamento> Medicamentos { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            
+
             List<IdentityRole> roles = new List<IdentityRole>
             {
                 new IdentityRole

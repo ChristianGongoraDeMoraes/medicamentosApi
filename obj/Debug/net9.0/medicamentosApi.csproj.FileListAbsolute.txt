@@ -176,3 +176,4 @@ C:\Users\chris\Desktop\medicamentosApi\medicamentosApi\obj\Debug\net9.0\refint\m
 C:\Users\chris\Desktop\medicamentosApi\medicamentosApi\obj\Debug\net9.0\medicamentosApi.pdb
 C:\Users\chris\Desktop\medicamentosApi\medicamentosApi\obj\Debug\net9.0\medicamentosApi.genruntimeconfig.cache
 C:\Users\chris\Desktop\medicamentosApi\medicamentosApi\obj\Debug\net9.0\ref\medicamentosApi.dll
+C:\Users\chris\Desktop\medicamentosApi\medicamentosApi\obj\Debug\net9.0\medicamentosApi.sourcelink.json

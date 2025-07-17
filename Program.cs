@@ -91,6 +91,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IMedicamentoRepository, MedicamentoRepository>();
+builder.Services.AddScoped<IHorariosRepository, HorariosRepository>();
 
 var app = builder.Build();
 

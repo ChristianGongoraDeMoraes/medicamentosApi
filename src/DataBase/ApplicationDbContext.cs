@@ -18,6 +18,7 @@ namespace medicamentosApi.src.DataBase
         }
         
         public DbSet<Medicamento> Medicamentos { get; set; }
+        public DbSet<Horario> Horarios { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace medicamentosApi.src.model
@@ -12,6 +13,7 @@ namespace medicamentosApi.src.model
         public string Dosagem { get; set; } = "";
         public string Instrucoes { get; set; } = "";
 
+        [JsonIgnore]
         public AppUser AppUser { get; set; } = new AppUser();
         public string IdAppUser { get; set; } 
     }

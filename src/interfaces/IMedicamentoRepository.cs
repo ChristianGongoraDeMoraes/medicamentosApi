@@ -11,5 +11,6 @@ namespace medicamentosApi.src.interfaces
     {
         Task<List<Medicamento>> getAllMedicamentos();
         Task<Medicamento?> saveMedicamento(MedicamentoRequestDto req, string idAppUser);
+        Task<List<Medicamento>> getAllMedicamentosByUser(AppUser appUser);
     }
 }

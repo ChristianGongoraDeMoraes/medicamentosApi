@@ -24,13 +24,18 @@ namespace medicamentosApi.src.controller
         public MedicamentoController(IMedicamentoRepository medicamentoRepository, UserManager<AppUser> userManager)
         {
             _medicamentoRepository = medicamentoRepository;
-             _userManager = userManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<MedicamentoResponseDto>>> getAllMedicamentos()
         {
-            List<Medicamento> medicamentos = await _medicamentoRepository.getAllMedicamentos();
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            if (appUser == null) return BadRequest("User Invalido");
+
+            List<Medicamento> medicamentos = await _medicamentoRepository.getAllMedicamentosByUser(appUser);
+
             var medicamentosResponse = medicamentos.Select(x => x.MedicamentoToResponse());
 
             return Ok(medicamentosResponse);
@@ -39,16 +44,18 @@ namespace medicamentosApi.src.controller
         [HttpPost]
         public async Task<ActionResult<MedicamentoResponseDto>> saveMedicamento([FromBody] MedicamentoRequestDto req)
         {
-             if(!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest();
 
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
-            if(appUser == null) return BadRequest("User Invalido");
+            if (appUser == null) return BadRequest("User Invalido");
 
             var medicamento = await _medicamentoRepository.saveMedicamento(req, appUser.Id);
             if (medicamento == null) return BadRequest("Medicamento Invalido");
-            
+
             return Ok(medicamento.MedicamentoToResponse());
         }
+        
+        
     }
 }

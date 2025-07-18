@@ -15,6 +15,6 @@ namespace medicamentosApi.src.model
 
         [JsonIgnore]
         public AppUser AppUser { get; set; } = new AppUser();
-        public string IdAppUser { get; set; } 
+        public string IdAppUser { get; set; }
     }
 }

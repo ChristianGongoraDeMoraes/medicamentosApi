@@ -11,7 +11,7 @@ namespace medicamentosApi.src.dto.medicamentodto
     {
         [Required]
         public string Nome { get; set; } = "";
-        
+
         public string Dosagem { get; set; } = "";
         public string Instrucoes { get; set; } = "";
     }

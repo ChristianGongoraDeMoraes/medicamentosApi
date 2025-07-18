@@ -52,5 +52,19 @@ namespace medicamentosApi.src.controller
             return Ok(res.Select(x => x.HorarioToResponse()));
 
         }
+        [HttpGet]
+        [Route("/user")]
+        public async Task<IActionResult> getHorariosByUser()
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            if (appUser == null) return BadRequest("User Invalido");
+
+            var res = await _horarioRepository.getHorariosByUserName(appUser);
+            if (res == null) return BadRequest();
+
+            return Ok(res.Select(x => x.HorarioToResponse()));
+
+        }
     }
 }

@@ -26,7 +26,12 @@ namespace medicamentosApi.src.repository
 
         public async Task<List<Medicamento>> getAllMedicamentosByUser(AppUser appUser)
         {
-            return await _context.Medicamentos.Include(x => x.AppUser).Where(x => x.AppUser == appUser).ToListAsync();
+            var medicamentos = await _context.Medicamentos
+                .Include(x => x.AppUser)
+                .Where(x => x.AppUser == appUser)
+                .ToListAsync();
+            
+            return medicamentos;
         }
 
         public async Task<Medicamento?> saveMedicamento(MedicamentoRequestDto req, string idAppUser)

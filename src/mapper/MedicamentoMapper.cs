@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using medicamentosApi.src.DataBase;
 using medicamentosApi.src.dto.medicamentodto;
 using medicamentosApi.src.model;
 

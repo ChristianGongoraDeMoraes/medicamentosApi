@@ -64,7 +64,21 @@ namespace medicamentosApi.src.controller
             if (res == null) return BadRequest();
 
             return Ok(res.Select(x => x.HorarioToResponse()));
+        }
 
+        [HttpDelete]
+        [Route("/horario/{medNome}/{dateTime}")]
+        public async Task<IActionResult> deleteHorario([FromRoute] string medNome, [FromRoute] string dateTime)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            if (appUser == null) return BadRequest("User Invalido");
+
+
+            var res = await _horarioRepository.deleteHorario(appUser, medNome, dateTime);
+            if (res == null) return BadRequest();
+
+            return Ok(res);
         }
     }
 }

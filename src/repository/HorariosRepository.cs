@@ -17,6 +17,19 @@ namespace medicamentosApi.src.repository
             _context = context;
         }
 
+        public async Task<bool?> deleteHorario(AppUser appUser, string medNome, string dateTime)
+        {
+            var medicamento = await _context.Medicamentos.FirstOrDefaultAsync(x => x.Nome == medNome && x.AppUser == appUser);
+            if (medicamento == null) return null;
+
+            var horario = await _context.Horarios.FirstOrDefaultAsync(x => x.appUser == appUser && x.medicamento == medicamento && x.Hora == DateTime.Parse(dateTime));
+            if (horario == null) return null;
+
+            _context.Remove(horario);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<List<Horario>> getHorariosByUserMedicamento(AppUser appUser, string nomeMedicamento)
         {
             var medicamento = await _context.Medicamentos.FirstOrDefaultAsync(x => x.Nome == nomeMedicamento && x.AppUser == appUser);

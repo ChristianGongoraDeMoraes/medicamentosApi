@@ -27,6 +27,20 @@ namespace medicamentosApi.src.controller
             _userManager = userManager;
         }
 
+        [Route("/{medNome}")]
+        [HttpDelete]
+        public async Task<IActionResult> deleteMedicamento([FromRoute] string medNome)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            if (appUser == null) return BadRequest("User Invalido");
+
+            var med = await _medicamentoRepository.deleteMedicamento(appUser, medNome);
+            if (med == null) return BadRequest("Invalid Med");
+
+            return Ok(med);
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<MedicamentoResponseDto>>> getAllMedicamentos()
         {

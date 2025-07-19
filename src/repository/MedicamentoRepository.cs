@@ -19,6 +19,17 @@ namespace medicamentosApi.src.repository
             _context = context;
         }
 
+        public async Task<bool?> deleteMedicamento(AppUser app, string medicamento)
+        {
+            var res = await _context.Medicamentos.FirstOrDefaultAsync(x => x.AppUser == app && x.Nome == medicamento);
+            if (res == null) return null;
+
+            _context.Remove(res);
+           await _context.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<List<Medicamento>> getAllMedicamentos()
         {
             return await _context.Medicamentos.Include(x => x.AppUser).ToListAsync();
@@ -30,7 +41,7 @@ namespace medicamentosApi.src.repository
                 .Include(x => x.AppUser)
                 .Where(x => x.AppUser == appUser)
                 .ToListAsync();
-            
+
             return medicamentos;
         }
 
@@ -50,5 +61,7 @@ namespace medicamentosApi.src.repository
 
             return medicamento;
         }
+        
+        
     }
 }

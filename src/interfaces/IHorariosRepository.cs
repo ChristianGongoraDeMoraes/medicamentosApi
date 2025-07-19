@@ -11,5 +11,7 @@ namespace medicamentosApi.src.interfaces
         Task<Horario> saveHorario(AppUser appUser, string nomeMedicamento);
         Task<List<Horario>> getHorariosByUserMedicamento(AppUser appUser, string nomeMedicamento);
         Task<List<Horario>> getHorariosByUserName(AppUser appUser);
+
+        Task<bool?> deleteHorario(AppUser appUser, string medNome, string dateTime);
     }
 }

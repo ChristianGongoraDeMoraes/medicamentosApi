@@ -47,7 +47,7 @@ namespace medicamentosApi.src.repository
 
         public async Task<Medicamento?> saveMedicamento(MedicamentoRequestDto req, string idAppUser)
         {
-            if (await _context.Medicamentos.AnyAsync(x => x.Nome == req.Nome)) return null;
+            if (await _context.Medicamentos.AnyAsync(x => x.Nome == req.Nome && x.AppUser.Id == idAppUser)) return null;
 
             Medicamento medicamento = req.RequestToMedicamento();
             AppUser medicamentoUser = await _context.Users.FirstOrDefaultAsync(x => idAppUser == x.Id);
